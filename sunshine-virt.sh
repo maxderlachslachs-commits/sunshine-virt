@@ -48,11 +48,10 @@ setup_virtual() {
 
     # Virtuellen Ausgang aktivieren + Modus setzen
     kscreen-doctor "output.Virtual-1.enable" "output.Virtual-1.mode.$mode" 2>/dev/null || {
-        # Fallback: Modus-Nummer raten
         kscreen-doctor "output.Virtual-1.enable" 2>/dev/null
     }
 
-    # Physische Ausgänge deaktivieren (nacheinander, da kscreen-doctor nur ein output-Argument pro Aufruf nimmt)
+    # Physische Ausgänge deaktivieren
     for out in $PHYS_OUTPUTS; do
         kscreen-doctor "output.$out.disable" 2>/dev/null || true
     done
