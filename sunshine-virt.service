@@ -1,0 +1,14 @@
+[Unit]
+Description=Sunshine Virtual Display Manager
+Documentation=https://github.com/maxderlachslachs-commits/sunshine-virt
+After=sunshine.service
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/sunshine-virt.sh daemon
+ExecStop=%h/.local/bin/sunshine-virt.sh cleanup
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
